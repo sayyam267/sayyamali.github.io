@@ -20,6 +20,7 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
+    "clean" : "gh-pages-clean",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
