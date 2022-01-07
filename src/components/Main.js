@@ -3,8 +3,54 @@ import React from 'react'
 import pic01 from '../images/pic01.jpg'
 import pic02 from '../images/pic02.jpg'
 import pic03 from '../images/pic03.jpg'
+import {SnackBar,Open} from './SnackBar';
+import SnackbarProvider from 'react-simple-snackbar';
+
+import axios from 'axios';
+
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name:'',
+      email:'',
+      message:''
+    }
+    this.handleName = this.handleName.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+  handleName(event) {
+    this.setState({name: event.target.value});
+    Open();
+  }
+
+  handleEmail(e) {
+    this.setState({ email: e.target.value})
+  }
+
+  handleMessage(e) {
+    this.setState({ message:e.target.value})
+  }
+  handleSubmit(event) {
+    axios.post('http://localhost:5000/post',{
+      name:this.state.name,
+      email:this.state.email,
+      message:this.state.message})
+      .then((res) => { 
+        console.log(res.data);
+        this.handleReset();})
+      .catch(error =>console.log(error));
+      event.preventDefault();
+    }
+  handleReset() {
+    this.setState({ name: ''})
+    this.setState({ message: ''})
+    this.setState({ email: '' })
+  }
   render() {
     let close = (
       <div
@@ -110,25 +156,27 @@ class Main extends React.Component {
           style={{ display: 'none' }}
         >
           <h2 className="major">Contact</h2>
-          <form method="post" action="#">
+          <form onSubmit={this.handleSubmit}>
             <div className="field half first">
               <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="name" id="name" value={this.state.name} onChange={this.handleName} />
             </div>
             <div className="field half">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
+              <input type="text" name="email" id="email" value={this.state.email} onChange={this.handleEmail}/>
             </div>
             <div className="field">
               <label htmlFor="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+              <textarea name="message" id="message" rows="4" value={this.state.message} onChange={this.handleMessage}></textarea>
             </div>
             <ul className="actions">
               <li>
-                <input type="submit" value="Send Message" className="special" />
+                <SnackbarProvider>
+                  <SnackBar />
+                </SnackbarProvider>
               </li>
               <li>
-                <input type="reset" value="Reset" />
+                <input type="reset" value="Reset" onClick={this.handleReset} />
               </li>
             </ul>
           </form>
@@ -175,5 +223,5 @@ Main.propTypes = {
   timeout: PropTypes.bool,
   setWrapperRef: PropTypes.func.isRequired,
 }
-
 export default Main
+

@@ -11,7 +11,8 @@
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-simple-snackbar": "^1.1.11"
   },
   "keywords": [
     "gatsby"
@@ -20,7 +21,7 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "clean" : "gh-pages-clean",
+    "clean": "gh-pages-clean",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
