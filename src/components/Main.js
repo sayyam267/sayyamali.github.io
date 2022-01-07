@@ -36,7 +36,7 @@ class Main extends React.Component {
     this.setState({ message:e.target.value})
   }
   handleSubmit(event) {
-    axios.post('http://nodemailia.herokuapp.com/post',{
+    axios.post('https://nodemailia.herokuapp.com/post',{
       name:this.state.name,
       email:this.state.email,
       message:this.state.message})
