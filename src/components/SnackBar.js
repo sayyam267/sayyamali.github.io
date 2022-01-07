@@ -6,6 +6,6 @@ const options = {
 
 export function SnackBar() {
     const [openSnackbar, closeSnackbar] = useSnackbar(options);
-    return (<input type="submit" value="Send Message" className="special" onClick={() =>openSnackbar('This is the content of the Snackbar.')}/>
+    return (<input type="submit" value="Send Message" className="special" onClick={() =>openSnackbar('Message Sent')}/>
     )
 }
