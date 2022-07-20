@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-dimension-v2",
-  "description": "Gatsby Starter - Dimension V2",
+  "name": "Sayyam Ali|صیام علی",
+  "description": "Sayyam Ali|صیام علی",
   "version": "1.0.0",
   "author": "Hunter Chang",
   "dependencies": {
@@ -14,9 +14,7 @@
     "react-helmet": "^5.2.1",
     "react-simple-snackbar": "^1.1.11"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
