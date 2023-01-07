@@ -2,6 +2,6 @@
 .cache
 node_modules
 yarn-error.log
-
+public
 # Build directory
 .DS_Store
